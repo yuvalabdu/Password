@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Meter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-box">
+            <div class="logo-icon">L</div>
+            <div class="logo-text">LockSmith.io</div>
+        </div>
+        <div class="status-badge">Analysis Live</div>
+    </div>
+    
+    <div class="grid-container">
+        <!-- Card 1: Password Input -->
+        <div class="card card-input">
+            <div class="label">Password Analysis</div>
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="Type your password here...">
+                <button id="toggle-password" type="button" aria-label="Toggle password visibility">
+                    <svg id="icon-show" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <svg id="icon-hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Card 2: Password Strength -->
+        <div class="card card-meter">
+            <div class="label" style="align-self: flex-start;">Strength Score</div>
+            
+            <div class="meter-circle">
+                <div id="score-text" class="meter-value">0</div>
+            </div>
+            
+            <div class="strength-meter-container" style="width: 100%;">
+                <div id="strength-text" class="strength-text meter-label" style="text-align: center; margin-bottom: 15px; font-size: 20px;">Very Weak</div>
+                <div class="strength-meter-bar">
+                    <div id="strength-meter-fill" class="strength-meter-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Security Checklist -->
+        <div class="card card-criteria">
+            <div class="label">Live Checklist</div>
+            <ul class="checklist">
+                <li id="check-length" class="invalid"><span>✖</span> At least 8 characters</li>
+                <li id="check-uppercase" class="invalid"><span>✖</span> Uppercase letters</li>
+                <li id="check-lowercase" class="invalid"><span>✖</span> Lowercase letters</li>
+                <li id="check-numbers" class="invalid"><span>✖</span> Numbers included</li>
+                <li id="check-special" class="invalid"><span>✖</span> Special symbols</li>
+                <li id="check-common" class="valid"><span>✔</span> Not a common password</li>
+                <li id="check-repeat" class="valid"><span>✔</span> No repeated characters</li>
+                <li id="check-seq" class="valid"><span>✔</span> No sequential patterns</li>
+            </ul>
+        </div>
+        
+        <!-- Card 4: Password Generator -->
+        <div class="card card-generator">
+            <div class="label">Secure Generator</div>
+            
+            <div class="generator-display">
+                <input type="text" id="generated-password" readonly placeholder="Generated password..." class="pass-input">
+                <button id="copy-password" type="button" title="Copy to clipboard" class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+            </div>
+            
+            <div class="generator-options">
+                <div class="slider-group">
+                    <label for="length-slider" class="slider-label">Length: <span id="length-val">16</span></label>
+                    <input type="range" id="length-slider" min="8" max="32" value="16" class="range-slider">
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="custom-checkbox"><input type="checkbox" id="gen-upper" checked> <span class="checkmark"></span> Uppercase</label>
+                    <label class="custom-checkbox"><input type="checkbox" id="gen-lower" checked> <span class="checkmark"></span> Lowercase</label>
+                    <label class="custom-checkbox"><input type="checkbox" id="gen-numbers" checked> <span class="checkmark"></span> Numbers</label>
+                    <label class="custom-checkbox"><input type="checkbox" id="gen-symbols" checked> <span class="checkmark"></span> Symbols</label>
+                </div>
+            </div>
+            
+            <button id="btn-generate" class="btn-primary">Generate & Apply</button>
+        </div>
+    </div>
+    <script type="module" src="/script.js"></script>
+</body>
+</html>

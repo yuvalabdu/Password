@@ -1,0 +1,6 @@
+{
+  "name": "Password Strength Meter",
+  "description": "A real-time password analysis tool that evaluates password strength based on security best practices.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
